@@ -406,8 +406,7 @@
               <div class="pill">CVPR 2026 • Dataset Project Page</div>
               <h1>UAVLight</h1>
               <p class="subtitle">
-                A multi-illumination UAV dataset for outdoor 3D reconstruction, relighting analysis,
-                and illumination-robust evaluation across large-scale real-world scenes.
+                A Benchmark for Illumination-Robust 3D Reconstruction in Unmanned Aerial Vehicle (UAV) Scenes
               </p>
 
               <div class="authors">
@@ -496,30 +495,39 @@
         <div class="section-head">
           <div>
             <h2>Dataset Composition</h2>
-            <p class="section-desc">
+            <!-- <p class="section-desc">
               Replace the placeholders below with your real capture pipeline, scene statistics, GPS/RTK setup, and split information.
-            </p>
+            </p> -->
           </div>
         </div>
-
         <div class="grid-2">
-          <div class="card content-card">
-            <h3>Capture Setup</h3>
-            <p>
-              Describe the UAV platform, sensor configuration, camera intrinsics, flight path design, RTK/GCP setup,
-              and how lighting slots were scheduled during data collection.
-            </p>
-            <div class="mini-placeholder">Capture setup figure placeholder</div>
+            <div class="card content-card">
+              <h3>Capture Setup</h3>
+              <p>
+                Describe the UAV platform, sensor configuration, camera intrinsics, flight path design, RTK/GCP setup,
+                and how lighting slots were scheduled during data collection.
+              </p>
+          
+              <div style="margin-top: 16px;">
+                <img src="assets/vis_UAVLight.jpeg" 
+                     alt="UAVLight capture setup"
+                     style="width: 100%; border-radius: 16px;">
+              </div>
+            </div>
+          
+            <div class="card content-card">
+              <h3>Scene Distribution</h3>
+              <p>
+                Visualization of representative dense point clouds from selected scenes in our benchmark.
+              </p>
+          
+              <div style="margin-top: 16px;">
+                <img src="assets/pointcloud.png" 
+                     alt="UAVLight scene distribution"
+                     style="width: 100%; border-radius: 16px;">
+              </div>
+            </div>
           </div>
-
-          <div class="card content-card">
-            <h3>Scene Distribution</h3>
-            <p>
-              Summarize scene categories, scale, environmental diversity, and how each scene is recorded across different lighting conditions.
-            </p>
-            <div class="mini-placeholder">Scene distribution figure placeholder</div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -528,27 +536,40 @@
         <div class="section-head">
           <div>
             <h2>Qualitative Highlights</h2>
-            <p class="section-desc">
+            <!-- <p class="section-desc">
               This section is ideal for showing the key visual story of UAVLight: same geometry, different sunlight, different shadows, different appearance.
-            </p>
+            </p> -->
           </div>
         </div>
 
-        <div class="grid-3">
-          <div class="compare-box">
-            <div class="compare-title">Morning / Noon / Evening</div>
-            <div class="mini-placeholder">Multi-illumination comparison placeholder</div>
-          </div>
-          <div class="compare-box">
-            <div class="compare-title">Cross-illumination Reconstruction</div>
-            <div class="mini-placeholder">Method comparison placeholder</div>
-          </div>
-          <div class="compare-box">
-            <div class="compare-title">Relighting / Robustness Demo</div>
-            <div class="mini-placeholder">Relighting result placeholder</div>
-          </div>
+        <div class="grid-2">
+
+            <!-- Figure 3 -->
+            <div class="card content-card">
+                <img src="assets/scenes_time.png"
+                    alt="Illumination variations across similar viewpoints"
+                    style="width: 100%; border-radius: 16px;">
+
+                <p style="font-size: 14px; color: #aaa; margin-top: 10px;">
+                <strong></strong> Illumination variations across similar viewpoints at different times of day.
+                Bottom-right shows ground-truth sunlight directions from GPS and timestamps.
+                </p>
+            </div>
+          
+            <!-- Figure 5 -->
+            <div class="card content-card">
+              <img src="assets/experiment.png"
+                   alt="Cross-light protocol"
+                   style="width: 100%; border-radius: 16px;">
+          
+              <p style="font-size: 14px; color: #aaa; margin-top: 10px;">
+                <strong></strong> Paired cross-light protocol. Lighting is estimated from
+                one subset of views and applied to another subset captured at the
+                same time slot.
+              </p>
+            </div>
+          
         </div>
-      </div>
     </section>
 
     <section id="benchmark">
@@ -556,53 +577,67 @@
         <div class="section-head">
           <div>
             <h2>Benchmark</h2>
-            <p class="section-desc">
+            <!-- <p class="section-desc">
               Replace this demo table with your official quantitative results. You can include PSNR, SSIM, LPIPS, and geometry error if needed.
-            </p>
+            </p> -->
           </div>
         </div>
 
         <div class="card content-card">
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Method</th>
-                  <th>Same-Illumination PSNR ↑</th>
-                  <th>Cross-Illumination PSNR ↑</th>
-                  <th>SSIM ↑</th>
-                  <th>LPIPS ↓</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Baseline A</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>Placeholder</td>
-                </tr>
-                <tr>
-                  <td>Baseline B</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>Placeholder</td>
-                </tr>
-                <tr>
-                  <td>Ours / Reference Method</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>--</td>
-                  <td>Placeholder</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Method</th>
+                      <th>Training Time ↓</th>
+                      <th>Avg. PSNR ↑</th>
+                      <th>Avg. SSIM ↑</th>
+                      <th>Avg. LPIPS ↓</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>NeRF-W</td>
+                      <td>709 hr</td>
+                      <td>18.41</td>
+                      <td>0.578</td>
+                      <td>0.458</td>
+                    </tr>
+                    <tr>
+                      <td>NeRF-OSR</td>
+                      <td>360 hr</td>
+                      <td>18.55</td>
+                      <td>0.490</td>
+                      <td>0.555</td>
+                    </tr>
+                    <tr>
+                      <td>GS-W</td>
+                      <td>85 hr</td>
+                      <td>21.27</td>
+                      <td>0.741</td>
+                      <td>0.186</td>
+                    </tr>
+                    <tr>
+                      <td>W-GS</td>
+                      <td>93 hr</td>
+                      <td>21.85</td>
+                      <td>0.725</td>
+                      <td>0.242</td>
+                    </tr>
+                    <tr>
+                      <td><strong>LumiGS</strong></td>
+                      <td><strong>71 hr</strong></td>
+                      <td><strong>22.19</strong></td>
+                      <td><strong>0.786</strong></td>
+                      <td><strong>0.156</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <p style="color: var(--muted); margin-top: 12px; font-size: 14px;">
+                Quantitative results averaged over 12 UAVLight scenes. Metrics include PSNR ↑, SSIM ↑, and LPIPS ↓.
+              </p>
         </div>
       </div>
     </section>
@@ -612,19 +647,36 @@
         <div class="section-head">
           <div>
             <h2>More Visual Results</h2>
-            <p class="section-desc">
+            <!-- <p class="section-desc">
               You can use this area for extra videos, per-scene galleries, failure cases, or a before/after slider.
-            </p>
+            </p> -->
           </div>
         </div>
 
         <div class="grid-2">
-          <div class="card content-card">
-            <div class="mini-placeholder" style="min-height: 260px;">Additional video placeholder</div>
-          </div>
-          <div class="card content-card">
-            <div class="mini-placeholder" style="min-height: 260px;">Additional gallery placeholder</div>
-          </div>
+
+            <!-- Figure 6 -->
+            <div class="card content-card">
+              <img src="assets/compare.png"
+                   alt="Reconstruction results across UAVLight scenes"
+                   style="width: 100%; border-radius: 16px;">
+          
+              <p style="font-size: 14px; color: #aaa; margin-top: 10px; text-align: center;">
+                <strong></strong> Visualization of the reconstruction results from different baselines on five UAVLight scenes.
+              </p>
+            </div>
+          
+            <!-- Figure 7 -->
+            <div class="card content-card">
+              <img src="assets/compare2.png"
+                   alt="Reconstruction across time slots"
+                   style="width: 100%; border-radius: 16px;">
+          
+              <p style="font-size: 14px; color: #aaa; margin-top: 10px; text-align: center;">
+                <strong></strong> Visualization of the reconstruction results from different baselines on Town with five different time slots.
+              </p>
+            </div>
+          
         </div>
       </div>
     </section>
@@ -634,9 +686,9 @@
         <div class="section-head">
           <div>
             <h2>Download</h2>
-            <p class="section-desc">
+            <!-- <p class="section-desc">
               Replace the links below with your official dataset release, code repository, supplementary material, and evaluation scripts.
-            </p>
+            </p> -->
           </div>
         </div>
 
@@ -657,9 +709,10 @@
           <div class="card content-card">
             <h3>License / Usage</h3>
             <p>
-              Add your dataset license, citation policy, intended research usage, and any restrictions here.
-            </p>
-            <div class="mini-placeholder">License / terms placeholder</div>
+                This dataset is released under the 
+                <strong>CC BY-NC 4.0 License</strong>. 
+                For commercial use, please contact the authors.
+              </p>
           </div>
         </div>
       </div>
@@ -671,18 +724,18 @@
           <div>
             <h2>BibTeX</h2>
             <p class="section-desc">
-              Replace the dummy citation below with your final CVPR 2026 citation.
+             CVPR 2026
             </p>
           </div>
         </div>
 
         <div class="card content-card">
-          <div class="code">@inproceedings{uavlight2026,
-  title     = {UAVLight: A Multi-Illumination UAV Dataset for Outdoor 3D Reconstruction},
-  author    = {Du, Kang and Liao, Xue and Xia, Junpeng and Guo, Chaozheng and Gu, Yi and Guan, Yirui and ShengHuang and Wang, Zeyu},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2026}
-}</div>
+          <!-- <div class="code">@inproceedings{uavlight2026,
+            title     = {UAVLight: A Multi-Illumination UAV Dataset for Outdoor 3D Reconstruction},
+            author    = {Du, Kang and Liao, Xue and Xia, Junpeng and Guo, Chaozheng and Gu, Yi and Guan, Yirui and ShengHuang and Wang, Zeyu},
+            booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+            year      = {2026}
+            }</div> -->
         </div>
       </div>
     </section>
@@ -692,7 +745,6 @@
     <div class="container">
       <div class="card footer-card">
         <strong>UAVLight</strong><br />
-        This project page template is ready for you to replace placeholders with figures, videos, download links, and benchmark results.
       </div>
     </div>
   </footer>
