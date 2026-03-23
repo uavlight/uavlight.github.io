@@ -739,32 +739,32 @@
       <div class="container">
         <h2>Illumination Variation and Protocol</h2>
         <p class="section-intro">
-          UAVLight explicitly isolates appearance changes caused by time-of-day dependent illumination, allowing controlled evaluation beyond standard single-condition reconstruction.
+          Unlike conventional outdoor reconstruction benchmarks, UAVLight explicitly highlights time-of-day dependent illumination variation. 
+          The benchmark includes ground-truth sunlight directions computed from GPS and timestamps, making it possible to analyze not only appearance change, 
+          but also its physical relationship with solar position.
         </p>
-
-        <div class="grid-2">
-          <div class="figure-card">
-            <img src="assets/scenes_time.png" alt="Illumination variations across similar viewpoints" />
-            <div class="figure-body">
-              <div class="figure-tag">Figure 3</div>
-              <div class="figure-title">Illumination variations across similar viewpoints</div>
-              <p class="figure-caption">
-                Illumination variations across similar viewpoints at different times of day. Bottom-right shows ground-truth sunlight directions from GPS and timestamps.
-              </p>
-            </div>
-          </div>
-
-          <div class="figure-card">
-            <img src="assets/experiment.png" alt="Paired cross-light protocol" />
-            <div class="figure-body">
-              <div class="figure-tag">Figure 5</div>
-              <div class="figure-title">Paired cross-light protocol</div>
-              <p class="figure-caption">
-                Lighting is estimated from one subset of views and applied to another subset captured at the same time slot, enabling a controlled cross-light evaluation protocol.
-              </p>
-            </div>
+    
+        <div class="figure-card" style="margin-bottom: 18px;">
+          <img src="assets/scenes_time.png" alt="Illumination variations across similar viewpoints" />
+          <div class="figure-body">
+            <div class="figure-tag">Figure 3</div>
+            <div class="figure-title">Illumination variations across similar viewpoints</div>
+            <p class="figure-caption">
+              Illumination variations across similar viewpoints at different times of day. Bottom-right shows ground-truth sunlight directions from GPS and timestamps.
+            </p>
           </div>
         </div>
+    
+        <!-- <div class="figure-card">
+          <img src="assets/experiment.png" alt="Paired cross-light protocol" />
+          <div class="figure-body">
+            <div class="figure-tag">Figure 5</div>
+            <div class="figure-title">Paired cross-light protocol</div>
+            <p class="figure-caption">
+              Lighting is estimated from one subset of views and applied to another subset captured at the same time slot, enabling a controlled cross-light evaluation protocol.
+            </p>
+          </div>
+        </div> -->
       </div>
     </section>
 
@@ -774,6 +774,21 @@
         <p class="section-intro">
           We report averaged quantitative results over 12 UAVLight scenes using PSNR, SSIM, and LPIPS, together with total training time.
         </p>
+
+        <div class="figure-card" style="
+          width: 50%;
+          max-width: 600px;
+          margin: 20px auto 24px;
+        ">
+          <img src="assets/experiment.png" alt="Paired cross-light protocol" />
+          <div class="figure-body">
+            <div class="figure-tag">Figure 5</div>
+            <div class="figure-title">Paired cross-light protocol</div>
+            <p class="figure-caption">
+              Lighting is estimated from one subset of views and applied to another subset captured at the same time slot, enabling a controlled cross-light evaluation protocol.
+            </p>
+          </div>
+        </div>
 
         <div class="benchmark-summary">
           <div class="panel">
