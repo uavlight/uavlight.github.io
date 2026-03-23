@@ -8,44 +8,26 @@
     name="description"
     content="UAVLight is a CVPR 2026 benchmark for illumination-robust 3D reconstruction in UAV scenes, featuring multi-time-of-day outdoor captures and cross-light evaluation protocols."
   />
-
   <style>
     :root {
-      --bg: #07101d;
-      --bg-soft: #0c1629;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.09);
-      --border: rgba(255, 255, 255, 0.10);
-      --border-strong: rgba(255, 255, 255, 0.16);
-      --text: #edf3ff;
-      --muted: #aebbd8;
-      --muted-2: #90a0c4;
-      --accent: #7aa2ff;
-      --accent-2: #67e8f9;
-      --accent-3: #9b8cff;
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.18);
-      --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --maxw: 1220px;
-      --hero-glow:
-        radial-gradient(circle at 0% 0%, rgba(122, 162, 255, 0.18), transparent 28%),
-        radial-gradient(circle at 100% 0%, rgba(103, 232, 249, 0.16), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(155, 140, 255, 0.10), transparent 24%);
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #e5e7eb;
+      --soft: #f8fafc;
+      --soft-2: #f3f4f6;
+      --accent: #2563eb;
+      --maxw: 1100px;
+      --radius: 18px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      color: var(--text);
-      background:
-        var(--hero-glow),
-        linear-gradient(180deg, #07101d 0%, #0a1220 35%, #09111d 100%);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.65;
     }
 
@@ -67,57 +49,32 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(7, 12, 22, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 50;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
 
     .topbar-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
+      gap: 18px;
       padding: 14px 0;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-
-    .brand-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      background:
-        linear-gradient(135deg, rgba(122, 162, 255, 1), rgba(103, 232, 249, 0.95));
-      box-shadow: 0 8px 24px rgba(103, 232, 249, 0.18);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-badge::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.34), transparent 45%);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
-      color: var(--muted);
       font-size: 14px;
-    }
-
-    .nav a {
-      transition: color 0.18s ease, opacity 0.18s ease;
+      color: var(--muted);
     }
 
     .nav a:hover {
@@ -125,227 +82,150 @@
     }
 
     .hero {
-      padding: 56px 0 30px;
+      padding: 44px 0 20px;
+      text-align: center;
     }
 
-    .hero-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
-      border: 1px solid var(--border-strong);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(122,162,255,0.16), transparent 28%),
-        radial-gradient(circle at 85% 12%, rgba(103,232,249,0.13), transparent 24%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 30px;
-      align-items: center;
-      padding: 40px;
-    }
-
-    .eyebrow-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
+    .venue {
+      display: inline-block;
       font-size: 13px;
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .pill.highlight {
-      color: #0b1220;
-      background: linear-gradient(135deg, rgba(122,162,255,0.95), rgba(103,232,249,0.95));
-      border: none;
       font-weight: 700;
+      color: var(--accent);
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.02;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.06;
       letter-spacing: -0.04em;
+      font-weight: 800;
     }
 
     .subtitle {
-      margin: 18px 0 0;
-      font-size: clamp(17px, 2vw, 20px);
+      margin: 14px auto 0;
+      max-width: 920px;
+      font-size: clamp(18px, 2.2vw, 24px);
       color: var(--muted);
-      max-width: 760px;
+      line-height: 1.45;
     }
 
     .authors {
-      margin-top: 22px;
+      margin: 22px auto 0;
+      max-width: 900px;
       font-size: 16px;
-      color: #dfe8ff;
+      line-height: 1.8;
     }
 
     .affiliation {
       margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
       font-size: 15px;
-      font-weight: 700;
-      color: #e6eeff;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .affiliation .x {
-      color: var(--accent);
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .meta {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       color: var(--muted);
-      font-size: 14px;
+      font-weight: 600;
     }
 
-    .meta-chip {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .cta-row {
+    .links {
+      margin-top: 22px;
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 28px;
     }
 
-    .btn {
+    .link-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 700;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
       font-size: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      font-weight: 600;
+      transition: all 0.15s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(255,255,255,0.18);
+    .link-btn:hover {
+      border-color: #cbd5e1;
+      background: var(--soft);
     }
 
-    .btn.primary {
-      color: #07111d;
-      border: none;
-      background: linear-gradient(135deg, rgba(122,162,255,1), rgba(103,232,249,1));
-      box-shadow: 0 10px 28px rgba(122,162,255,0.20);
+    .showcase {
+      padding: 22px 0 8px;
     }
 
-    .hero-media {
-      display: grid;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .glass-card {
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
-      border: 1px solid var(--border);
+    .showcase-card {
+      border: 1px solid var(--line);
       border-radius: 22px;
-      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      background: #fff;
     }
 
-    .hero-video-card,
-    .hero-image-card {
-      padding: 12px;
-    }
-
-    .hero-video-card video,
-    .hero-image-card img {
+    .showcase-card video {
       width: 100%;
-      border-radius: 16px;
+      aspect-ratio: 16 / 9;
+      background: #000;
     }
 
     .video-note {
-      margin: 10px 4px 2px;
+      text-align: center;
       font-size: 13px;
-      color: var(--muted-2);
+      color: var(--muted);
+      padding: 10px 16px 14px;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
     }
 
     section {
-      padding: 30px 0;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
+      padding: 28px 0;
     }
 
     h2 {
-      margin: 0;
-      font-size: clamp(26px, 4vw, 36px);
-      letter-spacing: -0.035em;
+      margin: 0 0 14px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
     }
 
-    .section-desc {
-      margin: 8px 0 0;
-      max-width: 820px;
+    .section-intro {
       color: var(--muted);
+      margin: 0 0 18px;
       font-size: 15px;
     }
 
-    .content-card {
-      padding: 26px;
+    .abstract-box {
+      font-size: 16px;
     }
 
-    .lead {
-      font-size: 16px;
-      color: #d7e3ff;
+    .teaser-box,
+    .panel,
+    .figure-card,
+    .table-panel,
+    .bibtex-box,
+    .resource-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .teaser-box {
+      padding: 14px;
+    }
+
+    .teaser-box img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .teaser-caption,
+    .figure-caption {
+      margin: 12px 0 0;
+      font-size: 14px;
+      color: var(--muted);
     }
 
     .grid-2 {
@@ -354,30 +234,41 @@
       gap: 18px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .panel {
+      padding: 20px;
+    }
+
+    .panel h3,
+    .figure-title {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       margin-top: 18px;
     }
 
     .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
     }
 
     .stat-value {
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 800;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
     }
 
     .stat-label {
@@ -386,81 +277,62 @@
       color: var(--muted);
     }
 
-    .feature-list {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .feature-list li + li {
-      margin-top: 8px;
-    }
-
     .figure-card {
       overflow: hidden;
     }
 
-    .figure-media {
-      padding: 12px 12px 0;
-    }
-
-    .figure-media img {
+    .figure-card img {
       width: 100%;
-      border-radius: 16px;
-      transition: transform 0.22s ease;
-    }
-
-    .figure-card:hover .figure-media img {
-      transform: scale(1.012);
     }
 
     .figure-body {
-      padding: 16px 18px 18px;
+      padding: 16px;
     }
 
     .figure-tag {
-      display: inline-flex;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent-2);
+      display: inline-block;
       margin-bottom: 8px;
-    }
-
-    .figure-title {
-      margin: 0 0 6px;
-      font-size: 18px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     .figure-caption {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
+      margin-top: 8px;
     }
 
-    .benchmark-hero {
+    .benchmark-summary {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 18px;
       margin-bottom: 18px;
     }
 
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .bullet-list li + li {
+      margin-top: 8px;
+    }
+
     .mini-metrics {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     .mini-metric {
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
     }
 
     .mini-metric .value {
@@ -475,35 +347,34 @@
       color: var(--muted);
     }
 
+    .table-panel {
+      overflow: hidden;
+    }
+
     .table-wrap {
       overflow-x: auto;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     table {
       width: 100%;
       min-width: 760px;
       border-collapse: collapse;
-      background: rgba(255,255,255,0.02);
     }
 
     th, td {
       padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
     }
 
     th {
-      background: rgba(255,255,255,0.05);
-      color: #dbe6ff;
-      font-size: 14px;
+      background: var(--soft);
       font-weight: 700;
     }
 
     td {
       color: var(--muted);
-      font-size: 14px;
     }
 
     tr:last-child td {
@@ -511,115 +382,156 @@
     }
 
     tr.best-row td {
-      color: #eff6ff;
+      color: var(--text);
       font-weight: 700;
-      background: rgba(122,162,255,0.06);
+      background: #f8fbff;
     }
 
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
+    .table-note {
+      padding: 12px 16px 16px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      background: #fff;
     }
 
     .resource-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
+      gap: 16px;
     }
 
-    .resource-card {
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+    .resource-panel {
+      padding: 20px;
     }
 
-    .resource-card h4 {
-      margin: 0 0 6px;
-      font-size: 16px;
+    .resource-panel h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
     }
 
-    .resource-card p {
+    .resource-panel p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .cta-row .link-btn {
+      border-radius: 12px;
     }
 
     .license-box {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
       margin-top: 14px;
-    }
-
-    .code {
-      background: rgba(7, 12, 24, 0.92);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 18px;
-      padding: 18px;
-      overflow-x: auto;
-      color: #dbeafe;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      white-space: pre-wrap;
-    }
-
-    footer {
-      padding: 26px 0 56px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .footer-card {
-      padding: 22px;
+    .bibtex-box {
+      padding: 18px;
+      background: #fcfcfd;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 14px;
+      line-height: 1.7;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #1f2937;
+    }
+
+    footer {
+      padding: 28px 0 60px;
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .footer-links {
       display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      gap: 12px;
     }
 
-    .footer-link {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+    .authors {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.8;
     }
 
-    .muted {
-      color: var(--muted);
+    /* 有主页的 */
+    .author-link {
+      color: #1f2937;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
     }
 
-    @media (max-width: 1040px) {
-      .hero-inner,
-      .benchmark-hero,
-      .download-grid,
+    /* hover 更明显 */
+    .author-link:hover {
+      color: #2563eb;
+    }
+
+    /* 没主页的 */
+    .author-name {
+      color: #1f2937;
+    }
+
+    /* 禁用按钮 */
+    .link-btn.disabled {
+      color: #9ca3af;
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+      cursor: not-allowed;
+    }
+
+    /* hover 不变化 */
+    .link-btn.disabled:hover {
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+    }
+
+    /* 小标签 */
+    .tag {
+      margin-left: 6px;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 960px) {
       .grid-2,
-      .grid-3,
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
+      .benchmark-summary,
       .resource-grid,
+      .stats,
       .mini-metrics {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 860px) {
-      .topbar-inner {
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -629,34 +541,17 @@
       }
 
       .hero {
-        padding-top: 36px;
-      }
-
-      .hero-inner {
-        padding: 24px;
-      }
-
-      .content-card {
-        padding: 20px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
+        padding-top: 30px;
       }
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-badge"></div>
-        <div>UAVLight</div>
-      </div>
-
+      <div class="brand">UAVLight</div>
       <nav class="nav">
-        <a href="#overview">Overview</a>
+        <a href="#abstract">Abstract</a>
         <a href="#dataset">Dataset</a>
         <a href="#protocol">Protocol</a>
         <a href="#benchmark">Benchmark</a>
@@ -670,180 +565,202 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="hero-card">
-          <div class="hero-inner">
-            <div>
-              <div class="eyebrow-row">
-                <div class="pill highlight">CVPR 2026</div>
-                <div class="pill">Dataset Project Page</div>
-                <div class="pill">Outdoor UAV Benchmark</div>
-              </div>
+        <div class="venue">CVPR 2026</div>
+        <h1>UAVLight</h1>
+        <p class="subtitle">
+          A Benchmark for Illumination-Robust 3D Reconstruction in
+          Unmanned Aerial Vehicle (UAV) Scenes
+        </p>
 
-              <h1>UAVLight</h1>
+        <div class="authors">
 
-              <p class="subtitle">
-                A Benchmark for Illumination-Robust 3D Reconstruction in
-                Unmanned Aerial Vehicle (UAV) Scenes.
-              </p>
+          <a href="https://kangdu.top" target="_blank" class="author-link">Kang Du</a>
+          ·
+          <span class="author-name">Xue Liao</span>
+          ·
+          <span class="author-name">Junpeng Xia</span>
+          ·
+          <span class="author-name">Chaozheng Guo</span>
+          ·
+          <span class="author-name">Yi Gu</span>
+          ·
+          <span class="author-name">Yirui Guan</span>
+          ·
+          <span class="author-name">ShengHuang</span>
+          ·
+          <span class="author-name">Zeyu Wang</span>
+        
+        </div>
 
-              <div class="authors">
-                Kang Du, Xue Liao, Junpeng Xia, Chaozheng Guo, Yi Gu, Yirui Guan,
-                ShengHuang, Zeyu Wang
-              </div>
+        <div class="affiliation" style="
+          margin-top: 12px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 14px;
+        ">
+        
+          <!-- HKUST -->
+          HKUST-GZ
+        
+          <!-- X -->
+          <span style="font-size: 18px; color: #2563eb;">×</span>
+        
+          <!-- Meituan -->
+          <img src="assets/meituan.png"
+              style="
+                height: 30px;
+                border-radius: 6px;
+                background: white;
+                padding: 2px;
+              ">
+        
+        </div>
 
-              <div class="affiliation">
-                <span>HKUST (Guangzhou)</span>
-                <span class="x">×</span>
-                <span>Meituan</span>
-              </div>
+        <div class="links">
 
-              <div class="meta">
-                <div class="meta-chip">18 large-scale scenes</div>
-                <div class="meta-chip">multi-time-of-day captures</div>
-                <div class="meta-chip">cross-light evaluation</div>
-                <div class="meta-chip">illumination-robust reconstruction</div>
-              </div>
+          <a class="link-btn" href="https://arxiv.org/abs/2511.21565" target="_blank">Paper</a>
+        
+          <span class="link-btn disabled">
+            Dataset <span class="tag">Coming Soon</span>
+          </span>
+        
+          <span class="link-btn disabled">
+            Code <span class="tag">Coming Soon</span>
+          </span>
+        
+          <span class="link-btn disabled">
+            Supplementary <span class="tag">Coming Soon</span>
+          </span>
+        
+          <a class="link-btn" href="#bibtex">BibTeX</a>
+        
+        </div>
 
-              <div class="cta-row">
-                <a class="btn primary" href="#download">Download Dataset</a>
-                <a class="btn" href="#benchmark">View Benchmark</a>
-                <a class="btn" href="#results">Visual Results</a>
-                <a class="btn" href="#bibtex">BibTeX</a>
-                <a class="btn" href="#">Paper PDF</a>
-              </div>
-            </div>
 
-            <div class="hero-media">
-              <div class="glass-card hero-video-card">
-                <video controls autoplay muted loop playsinline poster="assets/teaser.png">
-                  <source src="assets/supp_video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <p class="video-note">🔊 Click to unmute</p>
-              </div>
+      </div>
+    </section>
 
-              <div class="glass-card hero-image-card">
-                <img src="assets/teaser.png" alt="UAVLight teaser image" />
-              </div>
-            </div>
-          </div>
+    <section class="showcase">
+      <div class="container">
+        <div class="showcase-card">
+          <video controls autoplay muted loop playsinline poster="assets/teaser.png">
+            <source src="assets/supp_video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-note">Large overview video. Click to unmute.</div>
         </div>
       </div>
     </section>
 
-    <section id="overview">
+    <section id="abstract">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Overview</h2>
-            <p class="section-desc">
-              UAVLight is designed to study how outdoor 3D reconstruction methods behave under significant illumination changes in real UAV captures, moving beyond the standard single-time acquisition setting.
-            </p>
-          </div>
+        <h2>Abstract</h2>
+        <div class="abstract-box">
+          <p>
+            Existing outdoor 3D reconstruction benchmarks often assume relatively stable appearance and limited illumination variation. UAVLight introduces a benchmark tailored to illumination-robust reconstruction in real UAV scenes, with large-scale outdoor captures collected across multiple time slots under significantly changing sunlight and shadow conditions. The benchmark is designed to evaluate whether reconstruction methods remain reliable when similar viewpoints exhibit large appearance shifts due to time-of-day dependent lighting. In addition to diverse real-world UAV scenes, UAVLight provides a paired cross-light evaluation protocol and standardized quantitative comparisons across representative NeRF-based and Gaussian-based methods, enabling systematic study of illumination robustness in outdoor aerial reconstruction.
+          </p>
         </div>
 
-        <div class="card content-card">
-          <p class="lead">
-            Existing outdoor reconstruction benchmarks often assume relatively stable appearance and limited illumination variation. UAVLight instead focuses on large-scale real-world scenes captured across multiple time slots, providing a dedicated benchmark for evaluating reconstruction robustness under substantial sunlight and shadow changes.
+        <div class="teaser-box" style="margin-top: 20px;">
+          <img src="assets/teaser.png" alt="UAVLight teaser image" />
+          <p class="teaser-caption">
+            <strong>Teaser.</strong> UAVLight is a benchmark for studying illumination-robust 3D reconstruction in real UAV scenes across multiple times of day, with large appearance variation caused by changing sunlight and shadows.
           </p>
-
-          <div class="stats">
-            <div class="stat">
-              <div class="stat-value">18</div>
-              <div class="stat-label">Outdoor UAV Scenes</div>
-            </div>
-            <div class="stat">
-              <div class="stat-value">Multi-slot</div>
-              <div class="stat-label">Illumination Conditions</div>
-            </div>
-            <div class="stat">
-              <div class="stat-value">~100m</div>
-              <div class="stat-label">Typical Flight Altitude</div>
-            </div>
-            <div class="stat">
-              <div class="stat-value">Cross-light</div>
-              <div class="stat-label">Evaluation Protocol</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
     <section id="dataset">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Dataset Composition</h2>
-            <p class="section-desc">
-              UAVLight provides large-scale outdoor UAV captures together with multi-time-of-day illumination variation, making it suitable for robust 3D reconstruction, appearance modeling, and cross-light evaluation.
+        <h2>Dataset</h2>
+        <p class="section-intro">
+          UAVLight focuses on large-scale outdoor UAV captures with multi-time-of-day illumination variation, supporting robust reconstruction, cross-light evaluation, and analysis of appearance changes under real lighting conditions.
+        </p>
+    
+        <div class="panel" style="margin-bottom: 18px;">
+          <h3>Capture Setup</h3>
+          <p>
+            UAVLight is captured with real UAV platforms in outdoor scenes across multiple time slots, enabling consistent viewpoint comparison under diverse sunlight conditions.
+          </p>
+    
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-value">18</div>
+              <div class="stat-label">Scenes</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">Multi-slot</div>
+              <div class="stat-label">Lighting Conditions</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">~100m</div>
+              <div class="stat-label">Flight Altitude</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">Outdoor</div>
+              <div class="stat-label">Real UAV Capture</div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="figure-card" style="margin-bottom: 18px;">
+          <img src="assets/vis_UAVLight.jpeg" alt="UAVLight capture setup" />
+          <div class="figure-body">
+            <div class="figure-tag">Dataset Overview</div>
+            <div class="figure-title">Real UAV capture under changing illumination</div>
+            <p class="figure-caption">
+              UAVLight contains large-scale outdoor scenes collected under significantly different lighting conditions across the day.
             </p>
           </div>
         </div>
-
-        <div class="grid-2">
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/vis_UAVLight.jpeg" alt="UAVLight capture setup" />
-            </div>
-            <div class="figure-body">
-              <div class="figure-tag">Capture Setup</div>
-              <h3 class="figure-title">Real UAV data acquisition under varying illumination</h3>
-              <p class="figure-caption">
-                UAVLight is captured with real UAV platforms in outdoor scenes, covering different time slots and diverse sunlight conditions for illumination-robust evaluation.
-              </p>
-            </div>
+    
+        <div class="figure-card" style="margin-bottom: 18px;">
+          <img src="assets/pointcloud.png" alt="Representative dense point clouds" />
+          <div class="figure-body">
+            <div class="figure-tag">Scene Geometry</div>
+            <div class="figure-title">Representative geometry across diverse scenes</div>
+            <p class="figure-caption">
+              Dense point clouds from benchmark scenes illustrate the geometric diversity of urban and outdoor UAV environments.
+            </p>
           </div>
-
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/pointcloud.png" alt="Representative dense point clouds" />
-            </div>
-            <div class="figure-body">
-              <div class="figure-tag">Scene Distribution</div>
-              <h3 class="figure-title">Representative geometry from diverse real scenes</h3>
-              <p class="figure-caption">
-                Visualization of representative dense point clouds from selected benchmark scenes, highlighting real-world geometric diversity across urban and outdoor environments.
-              </p>
-            </div>
-          </div>
+        </div>
+    
+        <div class="panel">
+          <h3>What UAVLight Benchmarks</h3>
+          <p>
+            Rather than proposing a new method, UAVLight is designed as a benchmark to measure how reconstruction quality changes when illumination varies strongly across otherwise similar viewpoints.
+          </p>
         </div>
       </div>
     </section>
 
     <section id="protocol">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Illumination Variation & Protocol</h2>
-            <p class="section-desc">
-              The core challenge in UAVLight is that similar viewpoints can exhibit drastically different appearance due to time-of-day dependent lighting. Our protocol explicitly isolates this challenge for quantitative evaluation.
-            </p>
-          </div>
-        </div>
+        <h2>Illumination Variation and Protocol</h2>
+        <p class="section-intro">
+          UAVLight explicitly isolates appearance changes caused by time-of-day dependent illumination, allowing controlled evaluation beyond standard single-condition reconstruction.
+        </p>
 
         <div class="grid-2">
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/scenes_time.png" alt="Illumination variations across similar viewpoints" />
-            </div>
+          <div class="figure-card">
+            <img src="assets/scenes_time.png" alt="Illumination variations across similar viewpoints" />
             <div class="figure-body">
               <div class="figure-tag">Figure 3</div>
-              <h3 class="figure-title">Illumination variations across similar viewpoints</h3>
+              <div class="figure-title">Illumination variations across similar viewpoints</div>
               <p class="figure-caption">
                 Illumination variations across similar viewpoints at different times of day. Bottom-right shows ground-truth sunlight directions from GPS and timestamps.
               </p>
             </div>
           </div>
 
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/experiment.png" alt="Paired cross-light protocol" />
-            </div>
+          <div class="figure-card">
+            <img src="assets/experiment.png" alt="Paired cross-light protocol" />
             <div class="figure-body">
               <div class="figure-tag">Figure 5</div>
-              <h3 class="figure-title">Paired cross-light evaluation protocol</h3>
+              <div class="figure-title">Paired cross-light protocol</div>
               <p class="figure-caption">
-                Lighting is estimated from one subset of views and applied to another subset captured at the same time slot, enabling a controlled and challenging cross-light benchmark.
+                Lighting is estimated from one subset of views and applied to another subset captured at the same time slot, enabling a controlled cross-light evaluation protocol.
               </p>
             </div>
           </div>
@@ -853,29 +770,24 @@
 
     <section id="benchmark">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Benchmark</h2>
-            <p class="section-desc">
-              We report averaged quantitative results over 12 UAVLight scenes using PSNR, SSIM, and LPIPS, together with total training time.
-            </p>
-          </div>
-        </div>
+        <h2>Benchmark</h2>
+        <p class="section-intro">
+          We report averaged quantitative results over 12 UAVLight scenes using PSNR, SSIM, and LPIPS, together with total training time.
+        </p>
 
-        <div class="benchmark-hero">
-          <div class="card content-card">
-            <h3 style="margin-top: 0;">Benchmark Focus</h3>
-            <p class="muted">
-              UAVLight is not only a dataset release, but also a benchmark designed to test whether reconstruction methods remain stable under large appearance shifts caused by changing sunlight and shadows.
-            </p>
-
-            <ul class="feature-list">
+        <div class="benchmark-summary">
+          <div class="panel">
+            <h3>Benchmark Focus</h3>
+            <ul class="bullet-list">
               <li>Real outdoor UAV scenes captured across multiple time slots.</li>
-              <li>Cross-light protocol to stress illumination robustness.</li>
-              <li>Evaluation using PSNR, SSIM, and LPIPS.</li>
-              <li>Suitable for both NeRF-style and 3DGS-style methods.</li>
+              <li>Large appearance shifts from changing sunlight and shadows.</li>
+              <li>Cross-light evaluation protocol for illumination robustness.</li>
+              <li>Comparison across both NeRF-style and 3DGS-style methods.</li>
             </ul>
+          </div>
 
+          <div class="panel">
+            <h3>Best Averaged Results</h3>
             <div class="mini-metrics">
               <div class="mini-metric">
                 <div class="value">22.19</div>
@@ -891,35 +803,9 @@
               </div>
             </div>
           </div>
-
-          <div class="card content-card">
-            <h3 style="margin-top: 0;">Compared Methods</h3>
-            <p class="muted">
-              We include representative baselines from both NeRF-based and Gaussian-based reconstruction families to show how current methods behave under illumination variation.
-            </p>
-
-            <div class="resource-grid">
-              <div class="resource-card">
-                <h4>NeRF-W</h4>
-                <p>Photometric modeling baseline with appearance-aware components.</p>
-              </div>
-              <div class="resource-card">
-                <h4>NeRF-OSR</h4>
-                <p>Outdoor scene reconstruction baseline under changing conditions.</p>
-              </div>
-              <div class="resource-card">
-                <h4>GS-W</h4>
-                <p>Gaussian-based reconstruction baseline for fast rendering and training.</p>
-              </div>
-              <div class="resource-card">
-                <h4>W-GS / LumiGS</h4>
-                <p>Recent lighting-aware Gaussian reconstruction baselines for comparison.</p>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="card content-card">
+        <div class="table-panel">
           <div class="table-wrap">
             <table>
               <thead>
@@ -970,46 +856,37 @@
               </tbody>
             </table>
           </div>
-
-          <p style="color: var(--muted); margin: 12px 0 0; font-size: 14px;">
+          <div class="table-note">
             Quantitative results averaged over 12 UAVLight scenes. Metrics include PSNR ↑, SSIM ↑, and LPIPS ↓.
-          </p>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="results">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Reconstruction Results</h2>
-            <p class="section-desc">
-              Qualitative comparisons show the effect of illumination variation on reconstruction quality across scenes and time slots.
-            </p>
-          </div>
-        </div>
+        <h2>Qualitative Results</h2>
+        <p class="section-intro">
+          UAVLight includes qualitative comparisons across scenes and across time slots to reveal how illumination changes affect reconstruction quality.
+        </p>
 
         <div class="grid-2">
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/compare.png" alt="Reconstruction results on five UAVLight scenes" />
-            </div>
+          <div class="figure-card">
+            <img src="assets/compare.png" alt="Reconstruction results on five UAVLight scenes" />
             <div class="figure-body">
               <div class="figure-tag">Figure 6</div>
-              <h3 class="figure-title">Cross-scene qualitative comparison</h3>
+              <div class="figure-title">Reconstruction results on multiple scenes</div>
               <p class="figure-caption">
                 Visualization of the reconstruction results from different baselines on five UAVLight scenes.
               </p>
             </div>
           </div>
 
-          <div class="card figure-card">
-            <div class="figure-media">
-              <img src="assets/compare2.png" alt="Reconstruction on Town across five time slots" />
-            </div>
+          <div class="figure-card">
+            <img src="assets/compare2.png" alt="Reconstruction results on Town across time slots" />
             <div class="figure-body">
               <div class="figure-tag">Figure 7</div>
-              <h3 class="figure-title">Cross-time-slot reconstruction on Town</h3>
+              <div class="figure-title">Reconstruction results across time slots</div>
               <p class="figure-caption">
                 Visualization of the reconstruction results from different baselines on Town with five different time slots.
               </p>
@@ -1021,65 +898,34 @@
 
     <section id="download">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Download & Resources</h2>
-            <p class="section-desc">
-              Replace the placeholder links below with your final release links for the dataset, paper, codebase, and supplementary material.
-            </p>
-          </div>
-        </div>
+        <h2>Download and Resources</h2>
+        <p class="section-intro">
+          Replace the placeholder links below with the final release links for the dataset, paper, codebase, and supplementary materials.
+        </p>
 
-        <div class="download-grid">
-          <div class="card content-card">
-            <h3 style="margin-top: 0;">Resources</h3>
-            <p class="muted">
-              A recommended release package includes dataset files, scene metadata, train/test splits, camera parameters, evaluation scripts, and baseline checkpoints.
+        <div class="resource-grid">
+          <div class="resource-panel">
+            <h3>Resources</h3>
+            <p>
+              A recommended release package includes images, camera parameters, splits, scene metadata, evaluation scripts, and baseline checkpoints where applicable.
             </p>
-
             <div class="cta-row">
-              <a class="btn primary" href="#">Dataset Link</a>
-              <a class="btn" href="#">Code Link</a>
-              <a class="btn" href="#">Paper PDF</a>
-              <a class="btn" href="#">Supplementary</a>
-            </div>
-
-            <div class="resource-grid">
-              <div class="resource-card">
-                <h4>Dataset</h4>
-                <p>Images, camera parameters, splits, and metadata for all released scenes.</p>
-              </div>
-              <div class="resource-card">
-                <h4>Evaluation</h4>
-                <p>Scripts for PSNR, SSIM, LPIPS, and protocol-specific benchmark evaluation.</p>
-              </div>
-              <div class="resource-card">
-                <h4>Baselines</h4>
-                <p>Reference implementations or links for compared methods where applicable.</p>
-              </div>
-              <div class="resource-card">
-                <h4>Supplementary</h4>
-                <p>Extra visualizations, videos, and additional protocol details.</p>
-              </div>
+              <a class="link-btn" href="#">Dataset Link</a>
+              <a class="link-btn" href="#">Paper PDF</a>
+              <a class="link-btn" href="#">Code Link</a>
+              <a class="link-btn" href="#">Supplementary</a>
             </div>
           </div>
 
-          <div class="card content-card">
-            <h3 style="margin-top: 0;">License & Usage</h3>
-            <p class="muted">
-              UAVLight is intended for academic and non-commercial research use. For commercial licensing or partnership inquiries, please contact the authors.
+          <div class="resource-panel">
+            <h3>License and Usage</h3>
+            <p>
+              UAVLight is intended for academic and non-commercial research use.
             </p>
-
             <div class="license-box">
               <strong>License:</strong> CC BY-NC 4.0
-              <br /><br />
-              You are free to share and adapt the dataset for research purposes with proper attribution.
-              Commercial use is not permitted without explicit permission from the authors.
-            </div>
-
-            <div class="license-box">
-              <strong>Citation Policy:</strong><br />
-              If you use UAVLight in your research, please cite the CVPR 2026 paper and link to the project page when possible.
+              <br><br>
+              You may share and adapt the dataset for research purposes with proper attribution. Commercial use is not permitted without explicit permission from the authors.
             </div>
           </div>
         </div>
@@ -1088,45 +934,27 @@
 
     <section id="bibtex">
       <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>BibTeX</h2>
-            <p class="section-desc">
-              Replace this placeholder entry with your final camera-ready citation.
-            </p>
-          </div>
-        </div>
-
-        <div class="card content-card">
-          <div class="code">@inproceedings{uavlight2026,
+        <h2>BibTeX</h2>
+        <div class="bibtex-box">
+<pre>@inproceedings{uavlight2026,
   title     = {UAVLight: A Benchmark for Illumination-Robust 3D Reconstruction in Unmanned Aerial Vehicle (UAV) Scenes},
   author    = {Du, Kang and Liao, Xue and Xia, Junpeng and Guo, Chaozheng and Gu, Yi and Guan, Yirui and ShengHuang and Wang, Zeyu},
   booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year      = {2026}
-}</div>
+}</pre>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="card footer-card">
-        <div class="footer-grid">
-          <div>
-            <strong>UAVLight</strong><br />
-            <span class="muted">
-              A benchmark for illumination-robust 3D reconstruction in UAV scenes.
-            </span>
-          </div>
-
-          <div class="footer-links">
-            <a class="footer-link" href="#overview">Overview</a>
-            <a class="footer-link" href="#benchmark">Benchmark</a>
-            <a class="footer-link" href="#download">Download</a>
-            <a class="footer-link" href="#bibtex">BibTeX</a>
-          </div>
-        </div>
+    <div class="container footer-inner">
+      <div>UAVLight — A benchmark for illumination-robust 3D reconstruction in UAV scenes.</div>
+      <div class="footer-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#download">Download</a>
+        <a href="#bibtex">BibTeX</a>
       </div>
     </div>
   </footer>
