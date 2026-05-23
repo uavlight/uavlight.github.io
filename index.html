@@ -623,13 +623,9 @@
 
           <a class="link-btn" href="https://arxiv.org/abs/2511.21565" target="_blank">Paper</a>
         
-          <span class="link-btn disabled">
-            Dataset <span class="tag">Coming Soon</span>
-          </span>
+          <a class="link-btn" href="https://huggingface.co/datasets/dukang92/UAVLight" target="_blank">Dataset</a>
         
-          <span class="link-btn disabled">
-            Code <span class="tag">Coming Soon</span>
-          </span>
+          <a class="link-btn" href="https://github.com/uavlight/UAVLight" target="_blank">Code</a>
         
           <span class="link-btn disabled">
             Supplementary <span class="tag">Coming Soon</span>
@@ -646,11 +642,11 @@
     <section class="showcase">
       <div class="container">
         <div class="showcase-card">
-          <video controls autoplay muted loop playsinline poster="assets/teaser.png">
+          <video controls autoplay muted loop playsinline poster="assets/UAVLight_teaser.png">
             <source src="assets/supp_video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div class="video-note">Large overview video. Click to unmute.</div>
+          <div class="video-note">Large overview video hosted on Hugging Face. Click to unmute.</div>
         </div>
       </div>
     </section>
@@ -665,7 +661,7 @@
         </div>
 
         <div class="teaser-box" style="margin-top: 20px;">
-          <img src="assets/teaser.png" alt="UAVLight teaser image" />
+          <img src="assets/UAVLight_teaser.png" alt="UAVLight teaser image" />
           <p class="teaser-caption">
             <strong>Teaser.</strong> UAVLight is a benchmark for studying illumination-robust 3D reconstruction in real UAV scenes across multiple times of day, with large appearance variation caused by changing sunlight and shadows.
           </p>
@@ -917,20 +913,33 @@
       <div class="container">
         <h2>Download and Resources</h2>
         <p class="section-intro">
-          Replace the placeholder links below with the final release links for the dataset, paper, codebase, and supplementary materials.
+          The UAVLight dataset is hosted on Hugging Face, and the project code/documentation is maintained on GitHub.
         </p>
 
         <div class="resource-grid">
           <div class="resource-panel">
-            <h3>Resources</h3>
+            <h3>Dataset</h3>
             <p>
-              A recommended release package includes images, camera parameters, splits, scene metadata, evaluation scripts, and baseline checkpoints where applicable.
+              The released dataset includes scene-level archives, metadata, train/test splits, sparse reconstruction files, sun direction annotations, and optional geometry assets.
             </p>
             <div class="cta-row">
-              <a class="link-btn" href="#">Dataset Link</a>
-              <a class="link-btn" href="#">Paper PDF</a>
-              <a class="link-btn" href="#">Code Link</a>
-              <a class="link-btn" href="#">Supplementary</a>
+              <a class="link-btn" href="https://huggingface.co/datasets/dukang92/UAVLight" target="_blank">Hugging Face Dataset</a>
+              <a class="link-btn" href="https://huggingface.co/datasets/dukang92/UAVLight/blob/main/assets/uavlight.mp4" target="_blank">Video Preview</a>
+            </div>
+            <div class="license-box" style="margin-top: 16px;">
+<pre>huggingface-cli download dukang92/UAVLight --repo-type dataset --local-dir UAVLight</pre>
+            </div>
+          </div>
+
+          <div class="resource-panel">
+            <h3>Code and Paper</h3>
+            <p>
+              The GitHub repository provides project information, dataset download instructions, and code resources as they become available.
+            </p>
+            <div class="cta-row">
+              <a class="link-btn" href="https://github.com/uavlight/UAVLight" target="_blank">GitHub Repository</a>
+              <a class="link-btn" href="https://arxiv.org/abs/2511.21565" target="_blank">Paper PDF</a>
+              <span class="link-btn disabled">Supplementary <span class="tag">Coming Soon</span></span>
             </div>
           </div>
 
@@ -945,6 +954,23 @@
               You may share and adapt the dataset for research purposes with proper attribution. Commercial use is not permitted without explicit permission from the authors.
             </div>
           </div>
+
+          <div class="resource-panel">
+            <h3>Dataset Organization</h3>
+            <p>
+              Each released scene is packaged as a separate archive under the Hugging Face <code>data/</code> directory, with accompanying metadata under <code>metadata/</code>.
+            </p>
+            <div class="license-box">
+<pre>data/
+  &lt;scene_id&gt;.zip
+metadata/
+  scenes.csv
+  zip_sizes.csv
+  file_list.txt
+  zip_list.txt
+  summary.txt</pre>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -953,9 +979,9 @@
       <div class="container">
         <h2>BibTeX</h2>
         <div class="bibtex-box">
-<pre>@inproceedings{uavlight2026,
+<pre>@inproceedings{du2026uavlight,
   title     = {UAVLight: A Benchmark for Illumination-Robust 3D Reconstruction in Unmanned Aerial Vehicle (UAV) Scenes},
-  author    = {Du, Kang and Liao, Xue and Xia, Junpeng and Guo, Chaozheng and Gu, Yi and Guan, Yirui and ShengHuang and Wang, Zeyu},
+  author    = {Du, Kang and Liao, Xue and Xia, Junpeng and Guo, Chaozheng and Gu, Yi and Guan, Yirui and Wang, Duotun and Huang, Sheng and Wang, Zeyu},
   booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year      = {2026}
 }</pre>
